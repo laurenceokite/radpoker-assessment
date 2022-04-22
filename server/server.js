@@ -10,11 +10,11 @@ app.use(express.json());
 app.use(routes);
 
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, 'build')));
 
-  
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+
+app.get('/*', function (req, res) {
+   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+ });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
