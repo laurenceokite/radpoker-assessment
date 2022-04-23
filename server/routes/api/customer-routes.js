@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/customer/:id', (req, res) => {
-    const customer = customers.find(customer => (customer.id = req.params.id));
+    const customer = customers.find(customer => (customer.id == req.params.id));
     const associated = accounts.filter(account => (account.customer_id == req.params.id));
     res.json({"customer": customer, "accounts": [associated]});
 })
