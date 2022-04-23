@@ -2,12 +2,12 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import CustomerIndex from './pages/CustomerIndex';
 import CustomerView from './pages/CustomerView';
 import ContestsList from './pages/ContestsList';
-import Nav from './components/Nav';
+import Navigation from './components/Nav';
 
 function App() {
   return (
     <div>
-      <Nav />
+      <Navigation />
       <Routes>
         <Route path="/" element={<Navigate replace to="/customers" />} />
         <Route path='/customers' element={<CustomerIndex />} />

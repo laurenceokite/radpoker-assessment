@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { api } from "../../api";
+import Table from 'react-bootstrap/Table';
 
 const ContestsList = () => {
     const [data, setData] = useState();
@@ -31,7 +32,23 @@ const ContestsList = () => {
 
     return (
         <div>
-            {data.map(contest => (<div>{`${contest.name} Contestants: ${contest.accounts.length}`}</div>))}
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Contest</th>
+                        <th># of Contestants</th>
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {data.map(contest => (
+                    <tr>
+                        <td>{contest.name}</td>
+                        <td>{contest.accounts.length}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </Table>
         </div>
     );
 }

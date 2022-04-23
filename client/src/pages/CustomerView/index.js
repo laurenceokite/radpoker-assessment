@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Table from "react-bootstrap/esm/Table";
 import { useLocation, useParams } from "react-router-dom";
 import { api } from "../../api";
 
@@ -22,15 +23,59 @@ const CustomerView = () => {
     }
 
     const { customer, accounts } = data; 
+    
 
     return (
         <div>
-            <div>{`${customer.first_name} ${customer.last_name}`}</div>
-            <div>{customer.email}</div>
-            <div>{customer.reason_for_joining}</div>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Reason for Joining
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{`${customer.first_name} ${customer.last_name}`}</td>
+                        <td>{customer.email}</td>
+                        <td>{customer.reason_for_joining}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>
+                            Associated Accounts
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {accounts[0].map(account => (
+                        <tr>
+                            <td>{account.id}</td>
+                            <td>{account.address}</td>
+                            <td>{account.city}</td>
+                            <td>{account.state}</td>
+                            <td>{account.zip_code}</td>
+                        </tr>
+                    ))}
+                </tbody>
 
-            <div>Associated Accounts</div>
-            {accounts.map(account => (<div>{`${account.id} ${account.address} ${account.city} ${account.state} ${account.zip_code}`}</div>))}
+               
+            </Table>
            
         </div>
     )
